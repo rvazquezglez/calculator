@@ -49,4 +49,17 @@ describe("<Keypad />", () => {
         keypadWrapper.instance().clearPressed();
         expect(keypadWrapper.state().displayValue).toBe("0");
     });
+
+    it("sum numbers", () => {
+        const keypadWrapper = shallow(<Keypad/>);
+
+        keypadWrapper.instance().numberPressed(1);
+        keypadWrapper.instance().plusPressed();
+        expect(keypadWrapper.state().displayValue).toBe("1");
+        keypadWrapper.instance().numberPressed(2);
+        expect(keypadWrapper.state().displayValue).toBe("2");
+        keypadWrapper.instance().plusPressed();
+
+        expect(keypadWrapper.state().displayValue).toBe("3");
+    });
 });

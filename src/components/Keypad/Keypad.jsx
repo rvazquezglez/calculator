@@ -7,32 +7,72 @@ class Keypad extends Component {
         super(props);
         this.state = {
             displayValue: "0",
-            number: 0
+            number: "0",
+            firstOperand: null
         };
     }
 
     numberPressed(value) {
-        const displayValue = this.state.displayValue;
+        const number = this.state.number;
+        let newValue = number === "0"
+            ? `${value}`
+            : `${number}${value}`;
         this.setState({
-            displayValue: displayValue === "0"
-                ? `${value}`
-                : `${displayValue}${value}`
+            number: newValue,
+            displayValue: newValue
         });
     }
 
     decimalPressed() {
-        const displayValue = this.state.displayValue;
-        if (!displayValue.includes(".")) {
+        const number = this.state.number;
+        if (!number.includes(".")) {
             this.setState({
-                displayValue: `${displayValue}.`
+                number: `${number}.`,
+                displayValue: `${number}.`
             });
         }
     }
 
     clearPressed() {
         this.setState({
-            displayValue: "0"
+            displayValue: "0",
+            firstOperand: null
         });
+    }
+
+    evaluate() {
+        const operations = {
+            '/': (a, b) => a / b,
+
+            '*': (a, b) => a * b,
+
+            '+': (a, b) => a + b,
+
+            '-': (a, b) => a - b
+        };
+
+        return this.state.operator !== null
+            ? operations[this.state.operator](this.state.firstOperand, parseFloat(this.state.displayValue))
+            : 0
+    }
+
+    plusPressed() {
+        if (this.state.firstOperand === null) {
+            this.setState({
+                firstOperand: parseFloat(this.state.displayValue),
+                operator: "+",
+                number: "0"
+            });
+        } else {
+            let result = this.evaluate();
+            this.setState({
+                firstOperand: result,
+                displayValue: result.toString(),
+                operator: "+",
+                number: "0"
+            });
+
+        }
     }
 
     render() {
@@ -49,7 +89,8 @@ class Keypad extends Component {
 
                 <button
                     type="button"
-                    className="operator btn">
+                    className="operator btn"
+                    onClick={() => this.plusPressed()}>
                     +
                 </button>
                 <button
