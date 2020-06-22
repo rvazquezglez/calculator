@@ -20,6 +20,15 @@ class Keypad extends Component {
         });
     }
 
+    decimalPressed() {
+        const displayValue = this.state.displayValue;
+        if (!displayValue.includes(".")) {
+            this.setState({
+                displayValue: `${displayValue}.`
+            });
+        }
+    }
+
     render() {
         return (<div className="calculator keypad">
 
@@ -121,7 +130,8 @@ class Keypad extends Component {
                 </button>
                 <button
                     type="button"
-                    className="decimal btn">
+                    className="decimal btn"
+                    onClick={this.decimalPressed}>
                     .
                 </button>
                 <button
