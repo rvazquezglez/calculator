@@ -62,4 +62,43 @@ describe("<Keypad />", () => {
 
         expect(keypadWrapper.state().displayValue).toBe("3");
     });
+
+    it("multiplies numbers", () => {
+        const keypadWrapper = shallow(<Keypad/>);
+
+        keypadWrapper.instance().numberPressed(3);
+        keypadWrapper.instance().multiplyPressed();
+        expect(keypadWrapper.state().displayValue).toBe("3");
+        keypadWrapper.instance().numberPressed(2);
+        expect(keypadWrapper.state().displayValue).toBe("2");
+        keypadWrapper.instance().multiplyPressed();
+
+        expect(keypadWrapper.state().displayValue).toBe("6");
+    });
+
+    it("subtract numbers", () => {
+        const keypadWrapper = shallow(<Keypad/>);
+
+        keypadWrapper.instance().numberPressed(3);
+        expect(keypadWrapper.state().displayValue).toBe("3");
+        keypadWrapper.instance().minusPressed();
+        keypadWrapper.instance().numberPressed(2);
+        expect(keypadWrapper.state().displayValue).toBe("2");
+        keypadWrapper.instance().minusPressed();
+
+        expect(keypadWrapper.state().displayValue).toBe("1");
+    });
+
+    it("divides numbers", () => {
+        const keypadWrapper = shallow(<Keypad/>);
+
+        keypadWrapper.instance().numberPressed(8);
+        expect(keypadWrapper.state().displayValue).toBe("8");
+        keypadWrapper.instance().dividePressed();
+        keypadWrapper.instance().numberPressed(2);
+        expect(keypadWrapper.state().displayValue).toBe("2");
+        keypadWrapper.instance().dividePressed();
+
+        expect(keypadWrapper.state().displayValue).toBe("4");
+    });
 });

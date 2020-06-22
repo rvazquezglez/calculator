@@ -56,11 +56,11 @@ class Keypad extends Component {
             : 0
     }
 
-    plusPressed() {
+    operatorPressed(operator) {
         if (this.state.firstOperand === null) {
             this.setState({
                 firstOperand: parseFloat(this.state.displayValue),
-                operator: "+",
+                operator: operator,
                 number: "0"
             });
         } else {
@@ -68,11 +68,27 @@ class Keypad extends Component {
             this.setState({
                 firstOperand: result,
                 displayValue: result.toString(),
-                operator: "+",
+                operator: operator,
                 number: "0"
             });
 
         }
+    }
+
+    plusPressed() {
+        this.operatorPressed("+");
+    }
+
+    multiplyPressed() {
+        this.operatorPressed("*");
+    }
+
+    minusPressed() {
+        this.operatorPressed("-");
+    }
+
+    dividePressed() {
+        this.operatorPressed("/");
     }
 
     render() {
