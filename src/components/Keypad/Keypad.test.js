@@ -18,7 +18,7 @@ describe("<Keypad />", () => {
         expect(keypadWrapper.state().displayValue).toBe("12");
     });
 
-    it("adds a decimal point", () => {
+    it("adds a decimal point when '.' pressed", () => {
         const keypadWrapper = shallow(<Keypad/>);
 
         keypadWrapper.instance().decimalPressed();
@@ -38,5 +38,15 @@ describe("<Keypad />", () => {
 
         keypadWrapper.instance().decimalPressed();
         expect(keypadWrapper.state().displayValue).toBe("1.2");
+    });
+
+    it("clears display when 'C' is pressed", () => {
+        const keypadWrapper = shallow(<Keypad/>);
+
+        keypadWrapper.instance().numberPressed(1);
+        keypadWrapper.instance().numberPressed(2);
+        keypadWrapper.instance().numberPressed(3);
+        keypadWrapper.instance().clearPressed();
+        expect(keypadWrapper.state().displayValue).toBe("0");
     });
 });

@@ -29,6 +29,12 @@ class Keypad extends Component {
         }
     }
 
+    clearPressed() {
+        this.setState({
+            displayValue: "0"
+        });
+    }
+
     render() {
         return (<div className="calculator keypad">
 
@@ -131,12 +137,13 @@ class Keypad extends Component {
                 <button
                     type="button"
                     className="decimal btn"
-                    onClick={this.decimalPressed}>
+                    onClick={() => this.decimalPressed()}>
                     .
                 </button>
                 <button
                     type="button"
-                    className="clear btn">
+                    className="clear btn"
+                    onClick={() => this.clearPressed()}>
                     C
                 </button>
 
