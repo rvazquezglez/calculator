@@ -48,6 +48,7 @@ describe("<Keypad />", () => {
         keypadWrapper.instance().numberPressed(3);
         keypadWrapper.instance().clearPressed();
         expect(keypadWrapper.state().displayValue).toBe("0");
+        expect(keypadWrapper.state().number).toBe("0");
     });
 
     it("sum numbers", () => {

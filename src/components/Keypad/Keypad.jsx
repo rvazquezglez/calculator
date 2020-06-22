@@ -36,6 +36,7 @@ class Keypad extends Component {
     clearPressed() {
         this.setState({
             displayValue: "0",
+            number: "0",
             firstOperand: null
         });
     }
