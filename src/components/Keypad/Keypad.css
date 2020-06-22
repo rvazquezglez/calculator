@@ -1,0 +1,44 @@
+div.calculator.keypad {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.calculator-screen {
+    border: 0px;
+    letter-spacing: 0.5rem;
+    padding: 12px 0 20px;
+    font-size: 100%;
+    font-size: 40px;
+    line-height: 50px;
+    text-align: right;
+    width: 100%;
+    color: #434547;
+    font-weight: 500;
+    background-color: #fff;
+}
+
+button.btn {
+    height: 72px;
+    width: 25%;
+    color: #737577;
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 600;
+    border-radius: 0px;
+    background-color: #fff;
+}
+
+button.btn.digit, button.btn.decimal {
+    width: 33.33%;
+}
+
+button.btn.clear, button.btn.equal-sign {
+    width: 50%;
+}
+
+button.btn.digit.zero {
+    width: 66.66%;
+
+}

@@ -6,7 +6,8 @@ class Keypad extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            displayValue: "0"
+            displayValue: "0",
+            number
         };
     }
 
@@ -25,7 +26,7 @@ class Keypad extends Component {
             <input
                 type="text"
                 className="calculator-screen"
-                value={this.state.number}
+                value={this.state.displayValue}
                 disabled
             />
 
@@ -105,7 +106,7 @@ class Keypad extends Component {
 
                 <button
                     type="button"
-                    className="digit btn">
+                    className="digit btn zero">
                     0
                 </button>
                 <button
