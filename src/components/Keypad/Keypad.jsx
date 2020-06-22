@@ -7,16 +7,16 @@ class Keypad extends Component {
         super(props);
         this.state = {
             displayValue: "0",
-            number
+            number: 0
         };
     }
 
     numberPressed(value) {
-        const number = this.state.number;
+        const displayValue = this.state.displayValue;
         this.setState({
-            number: number === "0"
+            displayValue: displayValue === "0"
                 ? `${value}`
-                : `${number}${value}`
+                : `${displayValue}${value}`
         });
     }
 
@@ -55,58 +55,68 @@ class Keypad extends Component {
 
                 <button
                     type="button"
-                    className="digit btn">
+                    className="digit btn"
+                    onClick={() => this.numberPressed(7)}>
                     7
                 </button>
                 <button
                     type="button"
-                    className="digit btn">
+                    className="digit btn"
+                    onClick={() => this.numberPressed(8)}>
                     8
                 </button>
                 <button
                     type="button"
-                    className="digit btn">
+                    className="digit btn"
+                    onClick={() => this.numberPressed(9)}>
                     9
                 </button>
 
 
                 <button
                     type="button"
-                    className="digit btn">
+                    className="digit btn"
+                    onClick={() => this.numberPressed(4)}>
                     4
                 </button>
                 <button
                     type="button"
-                    className="digit btn">
+                    className="digit btn"
+                    onClick={() => this.numberPressed(5)}>
                     5
                 </button>
                 <button
                     type="button"
-                    className="digit btn">
+                    className="digit btn"
+                    onClick={() => this.numberPressed(6)}>
                     6
                 </button>
 
 
                 <button
                     type="button"
-                    className="digit btn">
+                    className="digit btn"
+                    onClick={() => this.numberPressed(1)}>
                     1
                 </button>
                 <button
                     type="button"
-                    className="digit btn">
+                    className="digit btn"
+                    onClick={() => this.numberPressed(2)}>
                     2
                 </button>
                 <button
                     type="button"
-                    className="digit btn">
+                    className="digit btn"
+                    onClick={() => this.numberPressed(3)}>
                     3
                 </button>
 
 
                 <button
                     type="button"
-                    className="digit btn zero">
+                    className="digit btn zero"
+                    onClick={() => this.numberPressed(0)}>
                     0
                 </button>
                 <button
