@@ -101,4 +101,20 @@ describe("<Keypad />", () => {
 
         expect(keypadWrapper.state().displayValue).toBe("4");
     });
+
+    it("displays result when equals is pressed", () => {
+        const keypadWrapper = shallow(<Keypad/>);
+
+        keypadWrapper.instance().numberPressed(8);
+        expect(keypadWrapper.state().displayValue).toBe("8");
+        keypadWrapper.instance().dividePressed();
+        keypadWrapper.instance().numberPressed(2);
+        expect(keypadWrapper.state().displayValue).toBe("2");
+        keypadWrapper.instance().equalsPressed();
+
+        expect(keypadWrapper.state().displayValue).toBe("4");
+
+        keypadWrapper.instance().numberPressed(2);
+        expect(keypadWrapper.state().displayValue).toBe("2");
+    });
 });

@@ -91,6 +91,24 @@ class Keypad extends Component {
         this.operatorPressed("/");
     }
 
+    equalsPressed() {
+        if (this.state.firstOperand === null) {
+            this.setState({
+                firstOperand: null,
+                operator: null,
+                number: "0"
+            });
+        } else {
+            let result = this.evaluate();
+            this.setState({
+                firstOperand: null,
+                displayValue: result.toString(),
+                operator: null,
+                number: "0"
+            });
+        }
+    }
+
     render() {
         return (<div className="calculator keypad">
 
@@ -209,7 +227,8 @@ class Keypad extends Component {
 
                 <button
                     type="button"
-                    className="equal-sign btn">
+                    className="equal-sign btn"
+                    onClick={() => this.equalsPressed()}>
                     =
                 </button>
             </div>
