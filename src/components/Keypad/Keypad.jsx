@@ -111,17 +111,20 @@ class Keypad extends Component {
                 </button>
                 <button
                     type="button"
-                    className="operator btn">
+                    className="operator btn"
+                    onClick={() => this.minusPressed()}>
                     -
                 </button>
                 <button
                     type="button"
-                    className="operator btn">
+                    className="operator btn"
+                    onClick={() => this.multiplyPressed()}>
                     &times;
                 </button>
                 <button
                     type="button"
-                    className="operator btn">
+                    className="operator btn"
+                    onClick={() => this.dividePressed()}>
                     &divide;
                 </button>
 
